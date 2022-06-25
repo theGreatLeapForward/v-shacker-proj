@@ -1,4 +1,3 @@
-import VSHACKERS
 
 def among() -> str:
     variable: str = "I am among"
@@ -8,4 +7,3 @@ def among() -> str:
 if __name__ == '__main__':
     print(among())
     print()
-    VSHACKERS.m
