@@ -1,0 +1,22 @@
+TODO:
+
+- Interfacing
+- Input parsing
+- Text and website processing
+- Output
+
+Current options:
+    Study Resources
+    Practice Questions
+
+structure idea:
+input is processed reactively
+when input is received, it is in a textBlock class
+this can be quiz questions, links, text, ect.
+class contains this information as well as needed metadata
+io file calls functions from parsing file
+parsing file calls functions from processing file
+processing file output is re-parsed using the metadata information
+and then parsing output is outoutted (FORMATTING)
+
+main file does startup tasks and stuff
