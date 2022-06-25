@@ -1,3 +1,5 @@
+import VSHACKERS
+
 def among() -> str:
     variable: str = "I am among"
     return variable
@@ -5,3 +7,5 @@ def among() -> str:
 
 if __name__ == '__main__':
     print(among())
+    print()
+    VSHACKERS.m
