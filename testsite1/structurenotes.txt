@@ -1,0 +1,12 @@
+this is just for me cuz im stupid
+website structure:
+1 app
+app is '' and 'appname' paths
+app switches between home (gets all the data)
+home: specify input type
+click on each link to get to other page with pre-made output
+
+and other pages (data display)
+other pages: resource finder, quiz maker, etc.
+
+extra: way to put output of other page back as input for next
