@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from .models import Quiz, Resources
+from .models import Quiz, ResourceList
 
 # admins can manually make custom quizzes/resources
 admin.site.register(Quiz)
-admin.site.register(Resources)
+admin.site.register(ResourceList)
 
 # Register your models here.

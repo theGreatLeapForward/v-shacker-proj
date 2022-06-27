@@ -5,23 +5,37 @@ from .forms import InputForm
 # Create your models here.
 
 
+class QuizQuestion(models.Model):
+    name = models.CharField(max_length=200)
+    body = models.CharField(max_length=200)
+    marked = False
+
+
+class QQMultipleChoice(QuizQuestion):
+    choices = list[models.CharField(max_length=200)]
+    answer = models.CharField(max_length=200)
+
+
 class Quiz(models.Model):
     """
-    fields: quiz_name, quiz_description, quiz_image, question_amount
-    quiz_questions fields: name, body, answer_type, possible choices
-
+    fields: quiz_subject, quiz_name, quiz_description,
+        quiz_image, question_amount, questions, on_subject_index, misc_text
+    methods: make_quiz
     """
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100, default='null_subject')
+    on_subject_index = models.IntegerField(default=0)
+
+    name = models.CharField(max_length=100, default='null_name')
+    description = models.CharField(max_length=100, default='null_description')
     image = models.ImageField(upload_to='notinator/quiz_images/', default='notinator/quiz_images/default.png')
-    quiz_question_amount = models.IntegerField(default=0)
 
-    question_names = list[models.CharField(max_length=20)]
-    question_bodies = list[models.CharField(max_length=200)]
-    question_answer_types = list[models.IntegerField(max_length=1, default=0)]
+    questions = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
+    misc_text = models.CharField(max_length=200, default='null_text')
 
-    # optional fields
-    question_choices = list[list[models.CharField(max_length=20)]]
+    class Index:
+        indexes = [
+            models.Index(fields=['subject' + 'on_subject_index'], name='quiz_subject_index'),
+        ]
 
     def __str__(self):
         return self.name
@@ -30,20 +44,32 @@ class Quiz(models.Model):
         pass
 
 
-class Resources(models.Model):
+class Resource(models.Model):
+    name = models.CharField(max_length=20, default='null_name')
+    description = models.CharField(max_length=200, default='null_description')
+    r_link = models.URLField(max_length=200, default='null_link')
+
+
+class ResourceList(models.Model):
     """
-    fields: resouces_name, resources_description, resources_image, resources_amount
-    resource_fields: name, link
+    fields: resouces_name, resources_description, resources_image,
+        resource_subject, resources_misc_text, resources, on_subject_index
+    methods: make_resources
     """
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100, default='null_subject')
+    on_subject_index = models.IntegerField(default=0)
+
+    name = models.CharField(max_length=100, default='null_name')
+    description = models.CharField(max_length=100, default='null_description')
     image = models.ImageField(upload_to='notinator/resources_images/', default='notinator/resources_images/default.png')
-    resources_amount = models.IntegerField(default=0)
 
-    resource_names = list[models.CharField(max_length=20)]
-    resource_links = list[models.URLField(max_length=200)]
+    resources = models.ForeignKey(Resource, on_delete=models.CASCADE)
+    misc_text = models.CharField(max_length=5000, default='null_text')
 
-    misc_resources_text = models.CharField(max_length=5000)
+    class Index:
+        indexes = [
+            models.Index(fields=['subject' + 'on_subject_index'], name='resources_subject_index')
+        ]
 
     def __str__(self):
         return self.name

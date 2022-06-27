@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<p>resourcepage</p>
+<p>{{resource_list.name}}<br></p>
+    <legend><p>{{resource_list.description}}<br></p></legend>
+    {% for choice in resource_list.resources.all %}
+        <p>{{choice.name}}<br></p>
+        <p>{{choice.description}}<br></p>
+        <a>{{choice.url}}<br></a>
+    {% endfor %}
 </body>
 </html>

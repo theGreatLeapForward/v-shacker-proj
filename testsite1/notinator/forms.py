@@ -12,3 +12,7 @@ class InputForm(forms.Form):
         choices=(('1', 'Quiz'), ('2', 'Resources')),
         label='Choose a result',
         required=True)
+
+    override_make_new = forms.BooleanField(
+        label='Always create new result',
+        required=False)
