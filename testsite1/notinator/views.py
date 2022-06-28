@@ -25,7 +25,8 @@ def homepage(request):
                     new_resource = ResourceList(subject=subject)
                     # todo: get resource body from function call
                     resource = Resource.objects.create()
-                    new_resource.resources.add(resource)
+                    resource.save()
+                    new_resource.resources.set([resource])
 
                     new_resource.on_subject_index = len(resource_lists)
                     new_resource.save()
@@ -37,7 +38,8 @@ def homepage(request):
                     new_quiz = Quiz(subject=subject)
 
                     question = QuizQuestion.objects.create()
-                    new_quiz.questions.add(question)
+                    question.save()
+                    new_quiz.questions.set([question])
                     # todo: get quiz from resource_list, and length from somewhere
 
                     # the length of the list of quizzes and corresponding resources should be the same

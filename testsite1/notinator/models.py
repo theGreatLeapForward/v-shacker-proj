@@ -73,7 +73,7 @@ class Quiz(models.Model):
     description = models.CharField(max_length=100, default='null_description')
     image = models.ImageField(upload_to='notinator/quiz_images/', default='notinator/quiz_images/default.png')
 
-    questions = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
+    questions = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE, default=QuizQuestion(name='null_name'))
     misc_text = models.CharField(max_length=200, default='null_text')
 
     class Index:
