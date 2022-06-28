@@ -1,47 +1,32 @@
 from django.db import models
 
-from .forms import InputForm
 
 # Create your models here.
 
 
 class QuizQuestion(models.Model):
-    name = models.CharField(max_length=200)
-    body = models.CharField(max_length=200)
-    marked = False
+    name = models.CharField(max_length=200, default='null_name')
+    body = models.CharField(max_length=200, default='null_body')
+
+    def mark(self, answer: str) -> bool:
+        return False
+
+    def get_feedback(self, answer: str) -> str:
+        return 'null_feedback'
 
 
 class QQMultipleChoice(QuizQuestion):
     choices = list[models.CharField(max_length=200)]
     answer = models.CharField(max_length=200)
 
+    def mark(self, answer: str) -> bool:
+        return str == self.answer
 
-class Quiz(models.Model):
-    """
-    fields: quiz_subject, quiz_name, quiz_description,
-        quiz_image, question_amount, questions, on_subject_index, misc_text
-    methods: make_quiz
-    """
-    subject = models.CharField(max_length=100, default='null_subject')
-    on_subject_index = models.IntegerField(default=0)
-
-    name = models.CharField(max_length=100, default='null_name')
-    description = models.CharField(max_length=100, default='null_description')
-    image = models.ImageField(upload_to='notinator/quiz_images/', default='notinator/quiz_images/default.png')
-
-    questions = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
-    misc_text = models.CharField(max_length=200, default='null_text')
-
-    class Index:
-        indexes = [
-            models.Index(fields=['subject' + 'on_subject_index'], name='quiz_subject_index'),
-        ]
-
-    def __str__(self):
-        return self.name
-
-    def make_quiz(self, input_form: InputForm):
-        pass
+    def get_feedback(self, answer: str) -> str:
+        if self.mark(answer):
+            return 'correct'
+        else:
+            return format('incorrect. Correct Answer: {}', answer)
 
 
 class Resource(models.Model):
@@ -63,7 +48,7 @@ class ResourceList(models.Model):
     description = models.CharField(max_length=100, default='null_description')
     image = models.ImageField(upload_to='notinator/resources_images/', default='notinator/resources_images/default.png')
 
-    resources = models.ForeignKey(Resource, on_delete=models.CASCADE)
+    resources = models.ForeignKey(Resource, on_delete=models.CASCADE, default=0)
     misc_text = models.CharField(max_length=5000, default='null_text')
 
     class Index:
@@ -74,5 +59,27 @@ class ResourceList(models.Model):
     def __str__(self):
         return self.name
 
-    def make_resources(self, input_form: InputForm):
-        pass
+
+class Quiz(models.Model):
+    """
+        fields: quiz_subject, quiz_name, quiz_description,
+            quiz_image, question_amount, questions, on_subject_index, misc_text
+        methods: make_quiz
+        """
+    subject = models.CharField(max_length=100, default='null_subject')
+    on_subject_index = models.IntegerField(default=0)
+
+    name = models.CharField(max_length=100, default='null_name')
+    description = models.CharField(max_length=100, default='null_description')
+    image = models.ImageField(upload_to='notinator/quiz_images/', default='notinator/quiz_images/default.png')
+
+    questions = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
+    misc_text = models.CharField(max_length=200, default='null_text')
+
+    class Index:
+        indexes = [
+            models.Index(fields=['subject' + 'on_subject_index'], name='quiz_subject_index'),
+        ]
+
+    def __str__(self):
+        return self.name

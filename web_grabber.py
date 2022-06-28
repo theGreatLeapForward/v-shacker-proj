@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import csv
 from googlesearch import search
 
-#input will be the search term
+# input will be the search term
 query = str(input)
 for j in search(query, tld="co.in", num=1, stop=1, pause=1):
     print(j)
@@ -26,10 +26,9 @@ for row in table.findAll('div',
     quote['author'] = row.img['alt'].split(" #")[1]
     quotes.append(quote)
 
-filename = str(j)+".csv"
+filename = str(j) + ".csv"
 with open(filename, 'w', newline='') as f:
     w = csv.DictWriter(f, ['theme', 'url', 'img', 'lines', 'author'])
     w.writeheader()
     for quote in quotes:
         w.writerow(quote)
-
