@@ -7,10 +7,11 @@
 <body>
 <p>{{resource_list.name}}<br></p>
     <legend><p>{{resource_list.description}}<br></p></legend>
-    {% for choice in resource_list.resources.all %}
+    {% for choice in resources %}
         <p>{{choice.name}}<br></p>
         <p>{{choice.description}}<br></p>
         <a>{{choice.url}}<br></a>
     {% endfor %}
+<a href="/">Back to Home</a>
 </body>
 </html>

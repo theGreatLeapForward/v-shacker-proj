@@ -1,21 +1,21 @@
+import quotes as quotes
 import requests
 from bs4 import BeautifulSoup
 import csv
 from googlesearch import search
 import spacy
 
-
-#inp will be the search term
-urls=[]
-inp=input('topic')
-keywords=input("keywords. Type 'N' to try funny")
-if keywords=='N':
+# inp will be the search term
+urls = []
+inp = input('topic')
+keywords = input("keywords. Type 'N' to try funny")
+if keywords == 'N':
     keywords = inp.split()
 else:
-    keywords=keywords.split()
+    keywords = keywords.split()
 query = str(inp)
 for j in search(query, tld="co.in", num=10, stop=10, pause=2):
-    #print(j)
+    # print(j)
     urls.append(j)
 
 for item in j:
@@ -73,7 +73,7 @@ text = ("When Sebastian Thrun started working on self-driving cars at "
 doc = nlp(text)
 
 # Analyze syntax
-print("Noun phrases:", [chunk.text for chunk in doac.noun_chunks])
+print("Noun phrases:", [chunk.text for chunk in doc.noun_chunks])
 print("Verbs:", [token.lemma_ for token in doc if token.pos_ == "VERB"])
 # Find named entities, phrases and concepts
 for entity in doc.ents:
