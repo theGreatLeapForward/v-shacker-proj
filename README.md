@@ -8,9 +8,12 @@ how to run the code locally:
 1. Download the code in testsite1 (nothing else matters)
 2. Install dependencies in requirements.txt with pip
 3. cd into testsite1 in a terminal window
-4. set up the database postgres
+4. set up the database
+
   a. download pgAdmin and set up a database 
+  
   b. set up environment variables PGPASSFILE and PGSERVICEFILE
+  
   
     PGPASSFILE should point to a .my_pgpass file containing localhost:5432:(database name):(user of db):(password of db user)
     PGSERVICEFILE should point to a .pg_service.conf file containing:
