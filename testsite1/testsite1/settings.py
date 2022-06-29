@@ -25,13 +25,13 @@ SECRET_KEY = 'django-insecure-30k88_t1iy8)rr_5(qps+o$2-d@v#&^n83opc#1)m1$sk!&4*@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'notinator.xyz', 'www.notinator.xyz', 'v-shacker-proj.vercel.app/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'notinator.xyz', 'www.notinator.xyz',
+                 'v-shacker-proj.vercel.app/, https://v-shacker-proj-thegreatleapforward.vercel.app/']
 # todo: add the hostname of the production server here
 
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig',
     'notinator.apps.NotinatorConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -76,10 +76,17 @@ WSGI_APPLICATION = 'testsite1.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'service': 'my_service',
+            'passfile': '.my_pgpass'
+        }
+
     }
+
 }
 
 
