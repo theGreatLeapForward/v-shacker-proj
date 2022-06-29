@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-30k88_t1iy8)rr_5(qps+o$2-d@v#&^n83opc#1)m1$sk!&4*@
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'notinator.xyz', 'www.notinator.xyz',
-                 'v-shacker-proj.vercel.app/, https://v-shacker-proj-thegreatleapforward.vercel.app/']
+                 '.vercel.app', '.now.sh']
 # todo: add the hostname of the production server here
 
 # Application definition
@@ -130,3 +130,6 @@ STATIC_URL = 'notinator/static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
