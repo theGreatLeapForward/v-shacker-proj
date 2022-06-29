@@ -77,15 +77,15 @@ WSGI_APPLICATION = 'testsite1.wsgi.application'
 
 DATABASES = {
 
-    # 'default': {
-    #
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'OPTIONS': {
-    #         'service': 'my_service',
-    #         'passfile': '.my_pgpass'
-    #     }
-    #
-    # }
+    'default': {
+
+         'ENGINE': 'django.db.backends.postgresql',
+         'OPTIONS': {
+             'service': 'my_service',
+             'passfile': '.my_pgpass'
+         }
+
+     }
 
 }
 
