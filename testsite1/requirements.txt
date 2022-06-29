@@ -4,4 +4,3 @@ psycopg2-binary==2.9.3
 Django==4.0.5
 Pillow==9.1.1
 cowpy==1.1.5
-pip==22.1.2
