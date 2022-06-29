@@ -3,6 +3,7 @@ thing
 
 
 how to run the code locally:
+
 0. Install PostgreSQL
 1. Download the code in testsite1 (nothing else matters)
 2. Install django, psycopg2, and Pillow with pip
