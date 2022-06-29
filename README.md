@@ -12,12 +12,17 @@ how to run the code locally:
   b. set up environment variables PGPASSFILE and PGSERVICEFILE
   
     PGPASSFILE should point to a .my_pgpass file containing localhost:5432:(database name):(user of db):(password of db user)
-    PGSERVICEFILE should point to a .pg_service.conf file containing 
+    PGSERVICEFILE should point to a .pg_service.conf file containing:
+    
       [my servive]
       host=localhost
+      
       user=(user of db)
+      
       dbname=(name of db)
+      
       port=5432
+      
       
       more info can be found here: https://docs.djangoproject.com/en/4.0/ref/databases/#postgresql-notes
 
