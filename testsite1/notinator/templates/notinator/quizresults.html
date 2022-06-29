@@ -2,13 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+        {% load static %}
+    <link rel="shortcut icon" href="{% static 'notinator/favicon.ico' %}" type="image/x-icon">
+
+
+    <title>Notinator | Results</title>
 </head>
 <body>
-<p>quiz results</p>
+<boy><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy>
+<boy2><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy2>
 
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'notinator/style.css' %}">
+
+<h1>Notinator</h1>
+<p>Quiz Results: </p>
+<h5>Note: you will not be able to see these after you close the page</h5>
+
+<form action={{ path }} method="post">
+    {% csrf_token %}
+    <table>
     {{ form }}
+        </table>
+</form>
 
-<a href="/">Back to Home</a>
+<a href="/"><hl> Back to Home</hl></a>
 </body>
 </html>

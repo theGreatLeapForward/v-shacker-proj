@@ -1,5 +1,6 @@
 from django import forms
 from .models import Quiz, QuizQuestion
+from django.utils.safestring import mark_safe
 
 
 class InputForm(forms.Form):
@@ -30,7 +31,7 @@ class QuizForm(forms.Form):
             if question.base_question:
                 # Base question
                 self.fields[question.name] = forms.CharField(
-                    label='Question: ' + str(i) + ': ' + question.name + ':\n' + question.body,
+                    label=mark_safe('Question: ' + str(i) + '<br />' + question.name + '<br />' + question.body),
                     max_length=200,
                     initial='enter your answer here',
                     required=True)
@@ -40,12 +41,15 @@ class QuizForm(forms.Form):
                 self.fields[question.name] = \
                     forms.ChoiceField(
                         choices=question.choices,
-                        label='Question: ' + str(i) + ': ' + question.name + ':\n' + question.body,
+                        label=mark_safe('Question: ' + str(i) + '<br />' + question.name + '<br />' + question.body),
                         required=True)
 
     def mark(self):
+        print("test success")
+
         question: QuizQuestion
         for i, question in enumerate(QuizQuestion.objects.filter(quiz=self.quiz)):
+            print("test success2")
 
             answer = self.cleaned_data[question.name]
 
@@ -56,5 +60,5 @@ class QuizForm(forms.Form):
             self.fields[question.name].required = False
             label = self.fields[question.name].label
             self.fields[question.name].label = \
-                "Question: {}. \n Your answer: {} \n Feedback: {}".format(
-                    label, answer, question.get_feedback(answer))
+                mark_safe("Question: {} <br /> Your answer: {} <br /> Feedback: {}".format(
+                    label, answer, question.get_feedback(answer)))

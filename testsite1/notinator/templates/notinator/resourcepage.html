@@ -2,16 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+        {% load static %}
+    <link rel="shortcut icon" href="{% static 'notinator/favicon.ico' %}" type="image/x-icon">
+
+
+    <title>Notinator | Resources</title>
 </head>
 <body>
-<p>{{resource_list.name}}<br></p>
-    <legend><p>{{resource_list.description}}<br></p></legend>
+<boy><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy>
+<boy2><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy2>
+
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'notinator/style.css' %}">
+
+<h1>Notinator</h1>
+
+<h3> We found these resources relating to your subject: {{resource_list.subject}}</h3>
+
+<!-- <h5>{{resource_list.name}}<br></h5>
+    <legend><h5>{{resource_list.description}}<br></h5></legend> -->
     {% for choice in resources %}
-        <p>{{choice.name}}<br></p>
-        <p>{{choice.description}}<br></p>
-        <a>{{choice.url}}<br></a>
+<h6>{{choice.name}}<br></h6>
+        <p><rssdesc>{{choice.description}}<br></rssdesc></p>
+        <a><rsslink>{{choice.url}}<br></rsslink></a>
     {% endfor %}
-<a href="/">Back to Home</a>
+<a href="/"><hl> Back to Home</hl></a>
 </body>
 </html>

@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+        {% load static %}
+    <link rel="shortcut icon" href="{% static 'notinator/favicon.ico' %}" type="image/x-icon">
+
+
+    <title>Notinator</title>
 </head>
 <body>
-<a href="/testsite1/notinator/static">Back to Home</a>
+<boy><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy>
+<boy2><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy2>
+
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'notinator/style.css' %}">
+
+<h1>Notinator</h1>
+
+<p>invalid form submission</p>
+
+<a href="/"><hl> Back to Home</hl></a>
 </body>
 </html>

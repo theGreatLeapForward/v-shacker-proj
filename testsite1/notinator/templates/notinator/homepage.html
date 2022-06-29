@@ -2,16 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+        {% load static %}
+    <link rel="shortcut icon" href="{% static 'notinator/favicon.ico' %}" type="image/x-icon">
+
+
+    <title>Notinator | Home</title>
 </head>
+<boy><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy>
+<boy2><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy2>
+
 <body>
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'notinator/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'notinator/style.css' %}">
+
+<h1>Notinator</h1>
+<h3>Study Helper</h3>
+<p><l>
+    Notinator is an online tool designed to aid student's lives.</l></p>
+
+    <p><k>We help student cut through the ever-growing fog of online
+        information to get the information they need to succeed.</k></p>
+
+    <p><m>In addition, we provide tools for students to test their knowledge
+    and improve their skills.
+</m></p>
+
+<h5>Get started by inputting anything!</h5>
+
 <form action="results/" method="post">
     {% csrf_token %}
-    {{ form }}
+    <table>
+    <tr>
+    <th><label for="id_text">Input:</label></th>
+    <td>
+      <input type="text" name="text" value="Enter your text and links here" maxlength="3000" required id="id_text">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="id_selection">Choose a result:</label></th>
+    <td>
+      <select name="selection" id="id_selection">
+  <option value="1">Quiz</option>
+  <option value="2">Resources</option>
+</select>
+    </td>
+  </tr>
+  <tr>
+    <th><label for="id_override_make_new">Always create new result:</label></th>
+    <td>
+      <input type="checkbox" name="override_make_new" id="id_override_make_new">
+    </td>
+  </tr>
+                </table>
+<heheheha>
     <input type="submit" value="Submit">
+    </heheheha>
 </form>
-    <p>body</p>
 </body>
 </html>

@@ -2,16 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link id="test" href="/homepage/">
+        {% load static %}
+    <link rel="shortcut icon" href="{% static 'notinator/favicon.ico' %}" type="image/x-icon">
+
+
+    <title>Notinator | Quiz</title>
 </head>
 <body>
-<p>quizpage</p>
+<boy><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy>
+<boy2><img src="{% static 'notinator/notinator_logo.png' %}" alt="Notinator"></boy2>
+
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'notinator/style.css' %}">
+
+<h1>Notinator</h1>
+<p>AI-Generated Quizzes to test your knowledge! </p>
 <form action={{ path }} method="post">
     {% csrf_token %}
+    <table>
     {{ form }}
+        </table>
+    <heheheha>
     <input type="submit" value="Submit">
+        </heheheha>
 </form>
-<a href="/">Back to Home</a>
+
+<a href="/"><hl> Back to Home</hl></a>
+
 </body>
+
 </html>
