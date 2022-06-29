@@ -10,6 +10,7 @@ how to run the code locally:
 4. set up the database postgres
   a. download pgAdmin and set up a database 
   b. set up environment variables PGPASSFILE and PGSERVICEFILE
+  
     PGPASSFILE should point to a .my_pgpass file containing localhost:5432:(database name):(user of db):(password of db user)
     PGSERVICEFILE should point to a .pg_service.conf file containing (
       [my servive]
