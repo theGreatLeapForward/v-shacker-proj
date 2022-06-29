@@ -6,7 +6,7 @@ how to run the code locally:
 
 0. Install PostgreSQL
 1. Download the code in testsite1 (nothing else matters)
-2. Install django, psycopg2, and Pillow with pip
+2. Install dependencies in requirements.txt with pip
 3. cd into testsite1 in a terminal window
 4. set up the database postgres
   a. download pgAdmin and set up a database 
